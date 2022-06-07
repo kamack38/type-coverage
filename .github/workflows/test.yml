@@ -16,6 +16,8 @@ jobs:
       - run: |
           npm run all
   test: # make sure the action works on a clean machine without building
+    env:
+      ACTIONS_STEP_DEBUG: true
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
