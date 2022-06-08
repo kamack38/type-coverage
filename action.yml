@@ -6,6 +6,9 @@ inputs:
     required: true
     description: 'input description here'
     default: 'default value if applicable'
+  source-root:
+    required: false
+    description: 'Sorce directory for analysis'
 runs:
   using: 'node16'
   main: 'dist/index.js'

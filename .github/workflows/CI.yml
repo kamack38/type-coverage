@@ -1,6 +1,10 @@
 name: '🎡 CI'
 on: # rebuild any PRs and main branch changes
   pull_request:
+    branches:
+      - main
+      - 'releases/*'
+
   push:
     branches:
       - main
@@ -24,6 +28,8 @@ jobs:
         uses: ./
         with:
           milliseconds: 1000
+          source-root: './src'
+
   analyze:
     name: '📊 CodeQL: Code analysis'
     runs-on: ubuntu-latest
