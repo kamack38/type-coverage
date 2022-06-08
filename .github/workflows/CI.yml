@@ -27,7 +27,6 @@ jobs:
       - name: 🧪 Test action
         uses: ./
         with:
-          milliseconds: 1000
           source-root: './src'
 
   analyze:
