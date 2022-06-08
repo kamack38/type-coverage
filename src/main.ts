@@ -22,7 +22,7 @@ async function run(): Promise<void> {
       threshold,
       strict,
       debug,
-      ignoreFiles: undefined,
+      ignoreFiles: [],
       ignoreCatch,
       ignoreUnread,
       cache: false

@@ -19,6 +19,7 @@ inputs:
   threshold:
     required: false
     description: 'Type coverage threshold'
+    default: '99'
   ignoreCatch:
     required: false
     description: 'Ignore type any for (try-)catch clause variable'
