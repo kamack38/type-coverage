@@ -1,3 +1,4 @@
+import { markdownTable } from 'markdown-table'
 import {
   AnyInfo,
   FileTypeCheckResult,
@@ -26,7 +27,12 @@ export type Options = Partial<
     tsProjectFile: string
   }
 >
-const getCoverage = async (options?: Options): Promise<CoverageData> => {
+
+export type ProgramOptions = Options & {
+  threshold: number
+}
+
+export const getCoverage = async (options?: Options): Promise<CoverageData> => {
   const {
     tsProjectFile = '.',
     strict,
@@ -61,4 +67,61 @@ const getCoverage = async (options?: Options): Promise<CoverageData> => {
   }
 }
 
-export default getCoverage
+const calculatePercentage = (correct: number, total: number): number => {
+  if (total === 0) {
+    return 100
+  }
+
+  return (correct * 100) / total
+}
+
+const calculatePercentageWithString = (
+  correct: number,
+  total: number
+): string => {
+  return `${calculatePercentage(correct, total).toFixed(2)}%`
+}
+
+const generateMarkdown = (
+  { fileCounts, percentage, total, covered, uncovered }: CoverageData,
+  threshold: number
+): string => {
+  console.log(threshold)
+  const mdTable = [
+    [
+      `filenames (${fileCounts.size})`,
+      `percent (${percentage.toFixed(2)}%)`,
+      `total (${total})`,
+      `covered (${covered})`,
+      `uncovered (${uncovered})`
+    ]
+  ]
+
+  for (const [filename, { totalCount, correctCount }] of fileCounts) {
+    mdTable.push([
+      filename.toString(),
+      calculatePercentageWithString(correctCount, totalCount),
+      totalCount.toString(),
+      correctCount.toString(),
+      (totalCount - correctCount).toString()
+    ])
+  }
+  const table = `### :bar_chart: Type coverage\n${markdownTable(mdTable)}`
+  return table
+}
+
+export default async function generateCoverageReport(
+  options: ProgramOptions
+): Promise<string> {
+  const data = await getCoverage({
+    tsProjectFile: options.tsProjectFile,
+    strict: options.strict,
+    debug: options.debug,
+    ignoreFiles: options.ignoreFiles,
+    ignoreCatch: options.ignoreCatch,
+    ignoreUnread: options.ignoreUnread,
+    cache: options.cache
+  })
+
+  return generateMarkdown(data, options.threshold)
+}

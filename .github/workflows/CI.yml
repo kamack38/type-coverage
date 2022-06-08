@@ -27,7 +27,7 @@ jobs:
       - name: 🧪 Test action
         uses: ./
         with:
-          source-root: './src'
+          sourceDirectory: './src'
 
   analyze:
     name: '📊 CodeQL: Code analysis'

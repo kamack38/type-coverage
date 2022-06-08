@@ -2,9 +2,31 @@ name: 'Typescript type coverage'
 description: '📊 Get type coverage of your typescript code'
 author: 'kamack38'
 inputs:
-  source-root:
+  sourceDirectory:
     required: false
     description: 'Sorce directory for analysis'
+  strict:
+    required: false
+    description: 'Enable strict mode'
+    default: 'false'
+  debug:
+    required: false
+    description: 'Enable debug mode'
+    default: 'false'
+  ignoreFiles:
+    required: false
+    description: 'Files to ignore'
+  threshold:
+    required: false
+    description: 'Type coverage threshold'
+  ignoreCatch:
+    required: false
+    description: 'Ignore type any for (try-)catch clause variable'
+    default: 'false'
+  ignoreUnread:
+    required: false
+    description: 'Allow writes to variables with implicit any types'
+    default: 'false'
 runs:
   using: 'node16'
   main: 'dist/index.js'

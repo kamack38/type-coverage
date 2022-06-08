@@ -25,6 +25,7 @@
   "license": "MIT",
   "dependencies": {
     "@actions/core": "^1.6.0",
+    "markdown-table": "^3.0.2",
     "type-coverage-core": "^2.21.1"
   },
   "devDependencies": {
