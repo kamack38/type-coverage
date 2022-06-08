@@ -18,6 +18,8 @@ jobs:
         run: npm run build
       - name: 💄 Run lint
         run: npm run lint
+      - name: 📦 Package
+        run: npm run package
       - name: 🧪 Test action
         uses: ./
         with:
