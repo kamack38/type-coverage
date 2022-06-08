@@ -1,4 +1,4 @@
-name: 'build-test'
+name: '🎡 CI'
 on: # rebuild any PRs and main branch changes
   pull_request:
   push:
@@ -7,7 +7,7 @@ on: # rebuild any PRs and main branch changes
       - 'releases/*'
 
 jobs:
-  ci:
+  CI:
     env:
       ACTIONS_STEP_DEBUG: true
     runs-on: ubuntu-latest
