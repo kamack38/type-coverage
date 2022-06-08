@@ -25,9 +25,12 @@ jobs:
       - name: 📦 Package
         run: npm run package
       - name: 🧪 Test action
+        id: test
         uses: ./
         with:
           sourceDirectory: './src'
+      - name: 📝 Set action summary
+        run: echo ${{ steps.test.outputs.markdown }} >> $GITHUB_STEP_SUMMARY
 
   analyze:
     name: '📊 CodeQL: Code analysis'
