@@ -27,8 +27,9 @@ async function run(): Promise<void> {
       ignoreUnread,
       cache: false
     }
-    console.log(await generateCoverageReport(options))
-    core.setOutput('coverage', new Date().toTimeString())
+    const markdown = await generateCoverageReport(options)
+    console.log(markdown)
+    core.setOutput('markdown', markdown)
   } catch (error) {
     if (error instanceof Error) core.setFailed(error.message)
   }
