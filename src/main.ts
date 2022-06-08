@@ -3,7 +3,7 @@ import generateCoverageReport, { getCoverage, ProgramOptions } from './coverage'
 
 async function run(): Promise<void> {
   try {
-    const srcDir: string = core.getInput('sourceDirectory')
+    const tsConfigPath: string = core.getInput('tsConfigPath')
     const threshold: number = parseInt(core.getInput('threshold'))
     const strict: boolean = core.getInput('strict') === 'true' ? true : false
     const ignoreCatch: boolean =
@@ -11,18 +11,19 @@ async function run(): Promise<void> {
     const ignoreUnread: boolean =
       core.getInput('ignoreUnread') === 'true' ? true : false
     const debug: boolean = core.getInput('debug') === 'true' ? true : false
+    const ignoreFiles: string[] = core.getInput('ignoreFiles').split('\n')
     console.log(
       'Coverage',
       JSON.stringify(
-        await getCoverage({ tsProjectFile: srcDir, strict, debug })
+        await getCoverage({ tsProjectFile: tsConfigPath, strict, debug })
       )
     )
     const options: ProgramOptions = {
-      tsProjectFile: srcDir,
+      tsProjectFile: tsConfigPath,
       threshold,
       strict,
       debug,
-      ignoreFiles: [],
+      ignoreFiles,
       ignoreCatch,
       ignoreUnread,
       cache: false

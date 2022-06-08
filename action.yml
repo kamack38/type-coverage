@@ -2,9 +2,10 @@ name: 'Typescript type coverage'
 description: '📊 Get type coverage of your typescript code'
 author: 'kamack38'
 inputs:
-  sourceDirectory:
+  tsConfigPath:
     required: false
-    description: 'Sorce directory for analysis'
+    description: 'Path to tsconfig.json file'
+    default: '.'
   strict:
     required: false
     description: 'Enable strict mode'
@@ -15,7 +16,7 @@ inputs:
     default: 'false'
   ignoreFiles:
     required: false
-    description: 'Files to ignore'
+    description: 'Glob pattern with files to ignore (line separated)'
   threshold:
     required: false
     description: 'Type coverage threshold'

@@ -28,17 +28,10 @@ jobs:
         id: test
         uses: ./
         with:
-          sourceDirectory: './src'
+          ignoreFiles: |
+            'dist/**'
       - name: 📝 Set action summary
         run: echo "${{ steps.test.outputs.markdown }}" >> $GITHUB_STEP_SUMMARY
-
-      - name: Run ts-coverage
-        run: npm run ts-coverage
-
-      - uses: actions/upload-artifact@v3
-        with:
-          name: coverage
-          path: ./coverage-ts/
 
   analyze:
     name: '📊 CodeQL: Code analysis'
