@@ -89,6 +89,7 @@ const generateMarkdown = (
   console.log(threshold)
   const mdTable = [
     [
+      ':white_check_mark:',
       `filenames (${fileCounts.size})`,
       `percent (${percentage.toFixed(2)}%)`,
       `total (${total})`,
@@ -98,7 +99,13 @@ const generateMarkdown = (
   ]
 
   for (const [filename, { totalCount, correctCount }] of fileCounts) {
+    const status =
+      Math.floor(calculatePercentage(correctCount, totalCount)) >= threshold
+        ? ':heavy_check_mark:'
+        : ':x:'
+
     mdTable.push([
+      status,
       filename.toString(),
       calculatePercentageWithString(correctCount, totalCount),
       totalCount.toString(),
