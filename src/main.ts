@@ -27,7 +27,7 @@ async function run(): Promise<void> {
       ignoreUnread,
       cache: false
     }
-    console.log(generateCoverageReport(options))
+    console.log(await generateCoverageReport(options))
     core.setOutput('coverage', new Date().toTimeString())
   } catch (error) {
     if (error instanceof Error) core.setFailed(error.message)
