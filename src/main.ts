@@ -68,7 +68,10 @@ async function run(): Promise<void> {
     const ms: string = core.getInput('milliseconds')
     core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_STEP_DEBUG` to true
 
-    console.log('Coverage', JSON.stringify(await getCoverage()))
+    console.log(
+      'Coverage',
+      JSON.stringify(await getCoverage({ tsProjectFile: './src' }))
+    )
 
     core.debug(new Date().toTimeString())
     await wait(parseInt(ms, 10))
