@@ -8,8 +8,6 @@ on: # rebuild any PRs and main branch changes
 
 jobs:
   CI:
-    env:
-      ACTIONS_STEP_DEBUG: true
     runs-on: ubuntu-latest
     steps:
       - name: 📚 Checkout
