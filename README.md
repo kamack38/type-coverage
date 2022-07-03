@@ -15,4 +15,4 @@ Printing markdown report in summary tab
   run: echo "${{ steps.ts-cov.outputs.markdown }}" >> $GITHUB_STEP_SUMMARY
 ```
 
-To see the result go to the [actions](/actions) tab
+To see the result go to the [actions](https://github.com/kamack38/type-coverage/actions) tab
