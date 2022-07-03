@@ -113,7 +113,9 @@ const generateMarkdown = (
       (totalCount - correctCount).toString()
     ])
   }
-  const table = `### :bar_chart: Type coverage\n${markdownTable(mdTable)}`
+  const table = `### :bar_chart: Type coverage\n${markdownTable(
+    mdTable
+  )}\nThreshold: ${threshold}`
   return table
 }
 
