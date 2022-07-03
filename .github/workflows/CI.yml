@@ -24,6 +24,8 @@ jobs:
         run: npm run lint
       - name: 📦 Package
         run: npm run package
+      - name: 🎡 Test coverage
+        run: npm run ts-coverage
       - name: 🧪 Test action
         id: test
         uses: ./
