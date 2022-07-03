@@ -5,7 +5,7 @@
 Printing markdown report in summary tab
 
 ```yaml
-- name: 🎡 Print type coverage
+- name: 📊 Generate typescript code coverage
   id: ts-cov
   uses: kamack38/type-coverage@main
   with:
