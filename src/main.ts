@@ -10,22 +10,16 @@ async function run(): Promise<void> {
       core.getInput('ignoreCatch') === 'true' ? true : false
     const ignoreUnread: boolean =
       core.getInput('ignoreUnread') === 'true' ? true : false
-    const ignoreFiles: string[] = core.getInput('ignoreFiles').split('\n')
+    const ignoreFiles: string[] = core
+      .getInput('ignoreFiles')
+      .split('\n')
+      .filter(el => el !== null && el !== '')
     const debug: boolean = core.getInput('debug') === 'true' ? true : false
     console.log(
       'Coverage',
       JSON.stringify(
         await getCoverage({ tsProjectFile: tsConfigPath, strict, debug })
       )
-    )
-    console.log(
-      tsConfigPath,
-      threshold,
-      strict,
-      ignoreCatch,
-      ignoreUnread,
-      ignoreFiles,
-      debug
     )
     const options: ProgramOptions = {
       tsProjectFile: tsConfigPath,
@@ -38,7 +32,6 @@ async function run(): Promise<void> {
       cache: false
     }
     const markdown = await generateCoverageReport(options)
-    console.log(markdown)
     core.setOutput('markdown', markdown)
   } catch (error) {
     if (error instanceof Error) core.setFailed(error.message)

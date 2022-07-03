@@ -31,7 +31,6 @@ jobs:
         uses: ./
         with:
           ignoreFiles: 'dist/**'
-          debug: true
       - name: 📝 Set action summary
         run: echo "${{ steps.test.outputs.markdown }}" >> $GITHUB_STEP_SUMMARY
 
