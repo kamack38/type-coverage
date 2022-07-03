@@ -14,3 +14,5 @@ Printing markdown report in summary tab
 - name: 📝 Set action summary
   run: echo "${{ steps.ts-cov.outputs.markdown }}" >> $GITHUB_STEP_SUMMARY
 ```
+
+To see the result go to the [actions](/actions) tab
