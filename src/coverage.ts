@@ -114,7 +114,7 @@ const generateMarkdown = (
     ])
   }
   const table = `### :bar_chart: Type coverage\n${markdownTable(mdTable)}
-  \nThreshold: ${threshold}`
+  \n🔶 Threshold: ${threshold}%`
   return table
 }
 
