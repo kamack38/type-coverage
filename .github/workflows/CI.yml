@@ -30,7 +30,8 @@ jobs:
         id: test
         uses: ./
         with:
-          ignoreFiles: 'dist/**'
+          ignoreFiles: |
+            dist/**
       - name: 📝 Set action summary
         run: echo "${{ steps.test.outputs.markdown }}" >> $GITHUB_STEP_SUMMARY
 
