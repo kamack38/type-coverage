@@ -15,6 +15,7 @@ async function run(): Promise<void> {
       .split('\n')
       .filter(el => el !== null && el !== '')
     const debug: boolean = core.getInput('debug') === 'true' ? true : false
+    console.log('ignoreFiles', JSON.stringify(ignoreFiles))
     console.log(
       'Coverage',
       JSON.stringify(
