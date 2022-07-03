@@ -10,7 +10,10 @@ async function run(): Promise<void> {
       core.getInput('ignoreCatch') === 'true' ? true : false
     const ignoreUnread: boolean =
       core.getInput('ignoreUnread') === 'true' ? true : false
-    const ignoreFiles: string[] = core.getInput('ignoreFiles').split('\n')
+    const ignoreFiles: string[] = core
+      .getInput('ignoreFiles')
+      .split('\n')
+      .filter(el => el !== null && el !== '')
     const debug: boolean = core.getInput('debug') === 'true' ? true : false
     console.log('ignoreFiles', JSON.stringify(ignoreFiles))
     console.log(
