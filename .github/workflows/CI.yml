@@ -16,14 +16,14 @@ jobs:
     steps:
       - name: 📚 Checkout
         uses: actions/checkout@v3
-      - name: 📦 Install dependencies
-        run: npm i
-      - name: 🔧 Build package
-        run: npm run build
-      - name: 💄 Run lint
-        run: npm run lint
-      - name: 📦 Package
-        run: npm run package
+      # - name: 📦 Install dependencies
+      #   run: npm i
+      # - name: 🔧 Build package
+      #   run: npm run build
+      # - name: 💄 Run lint
+      #   run: npm run lint
+      # - name: 📦 Package
+      #   run: npm run package
       - name: 🧪 Test action
         id: test
         uses: ./
