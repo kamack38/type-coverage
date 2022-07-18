@@ -30,14 +30,7 @@ inputs:
     description: 'Allow writes to variables with implicit any types'
     default: 'false'
 runs:
-  using: "composite"
-  steps:
-    - name: Build action
-      run: |
-        npm i
-        npm run build
-        npm run package
-      shell: bash
-    - name: Run action
-      run: node dist/index.js
-      shell: bash
+  using: 'node16'
+  pre: 'setup.js'
+  main: 'dist/index.js'
+
