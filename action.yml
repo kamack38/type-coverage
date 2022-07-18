@@ -31,6 +31,6 @@ inputs:
     default: 'false'
 runs:
   using: 'node16'
-  pre: 'setup.mjs'
+  # pre: 'setup.mjs'
   main: 'dist/index.js'
 
