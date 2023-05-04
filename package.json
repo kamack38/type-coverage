@@ -26,7 +26,7 @@
   "dependencies": {
     "@actions/core": "^1.10.0",
     "markdown-table": "^3.0.3",
-    "type-coverage-core": "^2.25.0"
+    "type-coverage-core": "^2.25.2"
   },
   "devDependencies": {
     "@types/node": "^18.16.3",
