@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 📚 Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: 📦 Install dependencies
         run: npm i
       - name: 🔧 Build package
@@ -50,7 +50,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # Initializes the CodeQL tools for scanning.
       - name: Initialize CodeQL
